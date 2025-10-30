@@ -1,18 +1,110 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Onestop Ai</title>
-  </head>
-  <body>
-    <div id="root"></div>
+<html lang="en" data-theme="dark"> <!-- default can be dark; JS will override from localStorage -->
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Onestop AI</title>
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="stylesheet" href="./styles.css" />
 
-    <!-- Vite entry -->
-    <script type="module" src="/src/main.jsx"></script>
+  <!-- Theme Tokens (can be moved to styles.css) -->
+  <style>
+    :root {
+      --bg: #0b0f14;
+      --ink: #e8eef4;
+      --muted: #98a2b3;
+      --card: #111827;
+      --border: #1f2937;
+      --accent: #3b82f6;
+      --accent-ink: #ffffff;
+      --chip: #0b1220;
+      --chip-ink: #cbd5e1;
+    }
 
-    <footer style="text-align:center;margin-top:40px">
-      Powered by <b>Onestop Ai services</b>
-    </footer>
-  </body>
+    /* Light */
+    [data-theme="light"] {
+      --bg:#f7fafc;
+      --ink:#0f172a;
+      --muted:#475569;
+      --card:#ffffff;
+      --border:#e5e7eb;
+      --accent:#2563eb;
+      --accent-ink:#ffffff;
+      --chip:#eef2ff;
+      --chip-ink:#334155;
+    }
+
+    /* Dark (Gen-Z neon default) */
+    [data-theme="dark"] {
+      --bg:#0b0f14;
+      --ink:#e8eef4;
+      --muted:#98a2b3;
+      --card:#101826;
+      --border:#1c2740;
+      --accent:#60a5fa;
+      --accent-ink:#010914;
+      --chip:#0f172a;
+      --chip-ink:#cbd5e1;
+    }
+
+    /* Pastel */
+    [data-theme="pastel"] {
+      --bg:#f8fafc;
+      --ink:#1f2937;
+      --muted:#64748b;
+      --card:#ffffff;
+      --border:#e2e8f0;
+      --accent:#22c55e;   /* soft emerald */
+      --accent-ink:#ffffff;
+      --chip:#f1f5f9;
+      --chip-ink:#334155;
+    }
+
+    /* Glass (subtle blur look via classes below) */
+    [data-theme="glass"] {
+      --bg:rgba(15,18,28,0.6);
+      --ink:#e6edf7;
+      --muted:#a9b5c6;
+      --card:rgba(255,255,255,0.12);
+      --border:rgba(255,255,255,0.18);
+      --accent:#8b5cf6;   /* violet */
+      --accent-ink:#ffffff;
+      --chip:rgba(255,255,255,0.08);
+      --chip-ink:#e6edf7;
+    }
+
+    /* Neo (high-contrast, playful) */
+    [data-theme="neo"] {
+      --bg:#0a0a0b;
+      --ink:#f5f7fb;
+      --muted:#9aa3b2;
+      --card:#121316;
+      --border:#23262d;
+      --accent:#00e5a8;   /* neon mint */
+      --accent-ink:#0a0a0b;
+      --chip:#0f1115;
+      --chip-ink:#c6d0e1;
+    }
+
+    /* Base app surfaces mapping */
+    body{background:var(--bg); color:var(--ink);}
+    .card{background:var(--card); border:1px solid var(--border); border-radius:16px;}
+    .muted{color:var(--muted);}
+    .btn{display:inline-flex; align-items:center; gap:.5rem; padding:.7rem 1rem; border-radius:12px; border:1px solid var(--border); background:var(--chip); color:var(--chip-ink); cursor:pointer}
+    .btn-accent{background:var(--accent); color:var(--accent-ink); border-color:transparent}
+    .chip{background:var(--chip); color:var(--chip-ink); padding:.35rem .7rem; border-radius:999px; border:1px solid var(--border)}
+    /* subtle glass helpers (used only if theme=glass) */
+    [data-theme="glass"] .glass {
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .theme-pill{padding:.5rem .9rem; border-radius:999px; border:1px solid var(--border); background:var(--card); color:var(--ink); cursor:pointer}
+    .theme-pill.active{background:var(--accent); color:var(--accent-ink); border-color:transparent}
+  </style>
+</head>
+<body>
+  <!-- …your app root… -->
+  <div id="app"></div>
+  <script src="./app.js" defer></script>
+</body>
 </html>
