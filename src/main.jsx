@@ -1,10 +1,7 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import DoctorPWA from "./DoctorPWA";
-import "./index.css";
+import React from 'react'
+import { createRoot } from 'react-dom/client'
+import DoctorPWA from './DoctorPWA.jsx'
+import './index.css' // or remove if you don’t have it
 
-ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <DoctorPWA />
-  </React.StrictMode>
-);
+const root = createRoot(document.getElementById('root'))
+root.render(<DoctorPWA />)
